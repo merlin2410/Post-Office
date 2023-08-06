@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Location</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="css/location.css">
 </head>
 <body>
@@ -44,10 +45,26 @@
         <iframe src="https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="1000" height="500" frameborder="0" style="border:0"></iframe>
     </section>
     <section id="more-info-section" class="more-info-section">
-        
+        <p class="title" id="info-title">More Information About You</p>
+        <div class="more-info" id="more-info">
+            <p>Time Zone:</p>
+            <p>Date and Time:</p>
+            <p>Pin Code:</p>
+            <p>Message:</p>
+
+        </div>
     </section>
     <section id="post-office-section" class="post-office-section">
+        <p class="title">Post Offices Near You</p>
+        <div class="search-bar">
+            <span class="material-symbols-outlined search-icon">
+                search
+                </span>
+            <input type="search" placeholder="Search By Name">
+        </div>
+        <div class="post-office-list" id="post-office-list">
 
+        </div>
     </section>
     <script src="js/location.js"></script>
 </body>
