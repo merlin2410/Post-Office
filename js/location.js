@@ -11,11 +11,13 @@ fetch('https://api64.ipify.org?format=json')
 
 
 async function fetchLocation(ip){
+  console.log(ip);
     data = await fetch(`https://ipinfo.io/${ip}/geo`);
     jsonData = await data.json();
     console.log(jsonData);
     renderInfo(jsonData);
     fetchPostOffices(jsonData);
+    
     
 }
 
@@ -33,6 +35,16 @@ function renderInfo(jsonData){
     
 }
 
+function renderMoreInfo(jsonData,n){
+  const date = new Date();
+const pstDate = date.toLocaleString("en-US", { timeZone: jsonData.timezone });
+  moreInfo = document.getElementById('more-info');
+  moreInfo.innerHTML = `<p>Time Zone: ${jsonData.timezone}</p>
+                        <p>Date and Time: ${pstDate}</p>
+                        <p>Pin Code: ${jsonData.postal}</p>
+                        <p>Message: Number of pincode(s) found: ${n}</p>`
+}
+
 function setGMap(latLong){
     mapFrame = document.getElementById('map');
     console.log(mapFrame)
@@ -46,16 +58,39 @@ async function fetchPostOffices(jsonData){
     postOffice = await postOfficeData.json();
     postOfficeList = postOffice[0].PostOffice;
     console.log(postOfficeList)
+    
+    renderPostOfficeList(postOfficeList);
+    renderMoreInfo(jsonData, postOfficeList.length);
+    
+}
+
+function renderPostOfficeList(postOfficeList){
     postOfficeElement = document.getElementById('post-office-list');
-    console.log(postOfficeElement)
-    postOfficeList.innerHTML ='';
+    postOfficeElement.innerHTML ='';
     for(let i=0;i<postOfficeList.length;i++){
         postOfficeElement.innerHTML += `<div class="cards">
-                                        <p>Name: ${postOfficeList[0].Name}</p>
-                                        <p>Brance Type: ${postOfficeList[0].BranchType}</p>
-                                        <p>Delivery Status: ${postOfficeList[0].DeliveryStatus}</p>
-                                        <p>District: ${postOfficeList[0].District}</p>
-                                        <p>Division: ${postOfficeList[0].Division}</p>
+                                        <p>Name: ${postOfficeList[i].Name}</p>
+                                        <p>Brance Type: ${postOfficeList[i].BranchType}</p>
+                                        <p>Delivery Status: ${postOfficeList[i].DeliveryStatus}</p>
+                                        <p>District: ${postOfficeList[i].District}</p>
+                                        <p>Division: ${postOfficeList[i].Division}</p>
                                         </div>`
     }
 }
+
+document.getElementById('search-list').addEventListener('input',(event)=>{
+  searchedString = event.target.value.toLowerCase();
+  postOfficeElement = document.getElementById('post-office-list');
+  postOfficeElement.innerHTML ='';
+  for(let i=0;i<postOfficeList.length;i++){
+    if(postOfficeList[i].Name.includes(searchedString)){
+      postOfficeElement.innerHTML += `<div class="cards">
+                                      <p>Name: ${postOfficeList[i].Name}</p>
+                                      <p>Brance Type: ${postOfficeList[i].BranchType}</p>
+                                      <p>Delivery Status: ${postOfficeList[i].DeliveryStatus}</p>
+                                      <p>District: ${postOfficeList[i].District}</p>
+                                      <p>Division: ${postOfficeList[i].Division}</p>
+                                      </div>`
+    }
+  }
+})
