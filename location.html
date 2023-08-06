@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Location</title>
+    <link rel="stylesheet" href="css/location.css">
+</head>
+<body>
+    <section id="info-section" class="info-section">
+        <div class="ip-display details">
+            <p id="ip-address-display" class="ip-address-display">IP Address:</p>
+            <span class="ip" id="ip">xxx</span>
+        </div>
+        <div class="location" id="location">
+            <div class="latitude details" id="lat-details">
+                <p class="lat-display" id="lat-display">Lat:</p>
+                <span class="lat" id="lat">xxx</span>
+            </div>
+            <div class="city details" id="city-details">
+                <p class="city-display" id="city-display">City:</p>
+                <span class="cit" id="cit">xxx</span>
+            </div>
+            <div class="organization details" id="org-details">
+                <p class="org-display" id="org-display">Organization:</p>
+                <span class="org" id="org">xxx</span>
+            </div>
+            <div class="longitude details" id="long-details">
+                <p class="long-display" id="long-display">Long:</p>
+                <span class="long" id="long">xxx</span>
+            </div>
+            <div class="region details" id="region-details">
+                <p class="reg-display" id="reg-display">Region:</p>
+                <span class="reg" id="reg">xxx</span>
+            </div>
+            <div class="host-details details" id="host-details">
+                <p class="host-display" id="host-display">Hostname:</p>
+                <span class="host" id="host">xxx</span>
+            </div>
+        </div>
+    </section>
+    <section id="map-section" class="map-section">
+        <p class="title" id="map-title">Your Current Location</p>
+        <iframe src="https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="1000" height="500" frameborder="0" style="border:0"></iframe>
+    </section>
+    <section id="more-info-section" class="more-info-section">
+        
+    </section>
+    <section id="post-office-section" class="post-office-section">
+
+    </section>
+    <script src="js/location.js"></script>
+</body>
+</html>

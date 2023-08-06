@@ -10,7 +10,9 @@ fetch('https://api64.ipify.org?format=json')
     console.error('Error fetching IP address:', error);
   });
 
-  
+document.getElementById('start-btn').addEventListener('click',(event)=>{
+    window.open('location.html','blank');
+})
 
   
   
