@@ -48,8 +48,7 @@ const pstDate = date.toLocaleString("en-US", { timeZone: jsonData.timezone });
 function setGMap(latLong){
     mapFrame = document.getElementById('map');
     console.log(mapFrame)
-    mapFrame.setAttribute('src', ` https://www.bing.com/maps/embed?h=400&w=500&cp=${latLong[0]}~${latLong[1]}&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8`
-)
+    mapFrame.setAttribute('src', `https://maps.google.com/maps?q=${latLong[0]},${latLong[1]}&z=15&output=embed`)
 }
 
 async function fetchPostOffices(jsonData){
